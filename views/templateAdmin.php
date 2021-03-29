@@ -32,8 +32,8 @@
     <i class="fa fa-caret-down"></i>
   </button>
   <div class="dropdown-container">
-    <a href="#">Ajout</a>
-    <a href="index.php?action=list-v">Liste</a>
+    <a href="index.php?action=add_v">Ajout</a>
+    <a href="index.php?action=list_v">Liste</a>
   </div>
 
   <button class="dropdown-btn"><i class="fas fa-users"></i>Grade 

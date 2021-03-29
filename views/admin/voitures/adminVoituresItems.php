@@ -3,9 +3,9 @@
 
 <div class="row">
     <div class="col-4 offset-8">
-        <form action="" method="post" class="input-group">
+        <form action="<?php $_SERVER['PHP_SELF'];?>" method="post" class="input-group">
             <input class="form-control text-center" type="search" name="search" id="search" placeholder="Rechercher..." >
-            <button class="btn btn-outline-secondary"><i class="fas fa-search"></i></button>
+            <button type="submit" class="btn btn-outline-secondary" name="soumis"><i class="fas fa-search"></i></button>
         </form>
     </div>
 </div>
@@ -24,20 +24,19 @@
               <th colspan="2" class="text-center">Actions</th>
           </tr>
       </thead>
-      <tbody>
+     <tbody>
           
           <tr>
-          <?php foreach ($cars as  $car) { ?>
+          <?php if(is_array($cars)){ foreach ($cars as  $car) { ?>
               <td><?=$car->getId_v();?></td>
               <td><?=$car->getMarque();?></td>
               <td><?=$car->getModele();?></td>
               <td><?=$car->getPrix();?></td>
-              <td><img src="./assets/images/<?=$car->getImage();?>" alt="" width="100" ></td>
+              <td><img src="./assets/images/<?=$car->getImage();?>" alt="" width="100"></td>
               <td><?=$car->getQuantite();?></td>
               <td><?=$car->getAnnee();?></td>
               <td ><?=$car->getDescription();?></td>
               <td><?=$car->getCategorie()->getNom_cat();?></td>
-
               <td class="text-center">
                 <a class="btn btn-success" href="#">
                     <i class="fas fa-pen"></i>
@@ -50,7 +49,7 @@
                 </a>
               </td>
           </tr>
-          <?php } ?>
+          <?php }}else{ echo"<tr ><td class='text-center'>".$cars."</td></tr>";} ?>
       </tbody>
   </table>
 

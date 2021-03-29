@@ -54,6 +54,10 @@ class Router{
                     case 'list_v':
                         $this->ctrv->listVoitures();
                         break;
+
+                    case 'add_v':
+                        $this->ctrv->addVoitures();
+                        break;
     
 
 
