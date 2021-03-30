@@ -63,7 +63,7 @@ class AdminVoitureModel extends Driver{
                 VALUES(:marque, :modele, :prix, :annee, :quantite, :image, :descr, :id_cat)";
         
         $tabParams = [
-            
+
             "marque"=>$voiture->getMarque(),
              "modele"=>$voiture->getModele(),
               "prix"=>$voiture->getPrix(),
@@ -80,6 +80,14 @@ class AdminVoitureModel extends Driver{
 
         return $result;
 
+    }
+
+    public function deleteV($id){
+        $sql = "DELETE FROM voiture
+                WHERE id_v = :id";
+        $result = $this->getRequest($sql, ['id'=>$id]);
+        $nb = $result->rowCount();//Pour connaitre le nbr de ligne impacté
+        return $nb;
     }
 }
 

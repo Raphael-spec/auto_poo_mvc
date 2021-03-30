@@ -69,4 +69,20 @@ class AdminVoitureController{
       require_once('./views/admin/voitures/adminAddV.php');
 
     }
+
+
+    public function removeV(){
+      
+      if(isset($_GET['id']) && $_GET['id'] < 1000 && filter_var($_GET['id'], FILTER_VALIDATE_INT)){
+        $id = trim($_GET['id']);
+        
+        $nbLine = $this->advm->deleteV($id);
+
+        if($nbLine > 0){
+                header('location:index.php?action=list_v');
+            }
+
+    }
+
+    }
 }

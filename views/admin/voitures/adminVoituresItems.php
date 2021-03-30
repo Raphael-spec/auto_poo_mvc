@@ -43,7 +43,7 @@
                 </a>
               </td>
               <td  class="text-center">
-                <a class="btn btn-danger" href="#"
+                <a class="btn btn-danger" href="index.php?action=delete_v&id=<?=$car->getId_v();?>"
                     onclick="return confirm('Etes vous sûr de ...')">
                     <i class="fas fa-trash"></i>
                 </a>
