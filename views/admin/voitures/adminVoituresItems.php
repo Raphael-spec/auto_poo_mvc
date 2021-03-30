@@ -38,7 +38,7 @@
               <td ><?=$car->getDescription();?></td>
               <td><?=$car->getCategorie()->getNom_cat();?></td>
               <td class="text-center">
-                <a class="btn btn-success" href="#">
+                <a class="btn btn-success" href="index.php?action=edit_v&id=<?=$car->getId_v();?>">
                     <i class="fas fa-pen"></i>
                 </a>
               </td>
@@ -49,7 +49,7 @@
                 </a>
               </td>
           </tr>
-          <?php }}else{ echo"<tr ><td class='text-center'>".$cars."</td></tr>";} ?>
+          <?php }}else{ echo"<tr class='text-center text-danger'><td colspan='10' >".$cars."</td></tr>";} ?>
       </tbody>
   </table>
 

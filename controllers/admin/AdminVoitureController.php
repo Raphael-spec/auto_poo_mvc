@@ -71,18 +71,36 @@ class AdminVoitureController{
     }
 
 
-    public function removeV(){
+    public function removeVoiture(){
       
-      if(isset($_GET['id']) && $_GET['id'] < 1000 && filter_var($_GET['id'], FILTER_VALIDATE_INT)){
-        $id = trim($_GET['id']);
+      if(isset($_GET['id']) && filter_var($_GET['id'], FILTER_VALIDATE_INT)){//<1000 ne sert a rien sur ce coup la et dum trim
         
-        $nbLine = $this->advm->deleteV($id);
+        $id = $_GET['id'];
+        $delV = new Voiture();
+        $delV->setId_v($id);
+        $nb = $this->advm->deleteVoiture($delV);
 
-        if($nbLine > 0){
-                header('location:index.php?action=list_v');
-            }
+          if($nb > 0){
+                  header('location:index.php?action=list_v');
+              }
+
+       }
 
     }
+
+    public function editVoiture(){
+
+      if(isset($_GET['id']) && filter_var($_GET['id'], FILTER_VALIDATE_INT)){
+        
+        $id = $_GET['id'];
+        $editV = new Voiture();
+        $editV->setId_v($id);
+        $editCar = $this->advm->voitureItem($editV);
+            
+        $tabCat = $this->adCat->getCategories();
+        require_once('./views/admin/voitures/adminEditV.php');
+       }
+      
 
     }
 }
