@@ -48,8 +48,9 @@
     <i class="fa fa-caret-down"></i>
   </button>
   <div class="dropdown-container">
-    <a href="#"><i class="fas fa-plus"></i>Ajout</a>
-    <a href="#"><i class="fas fa-list"></i>Liste</a>
+    <a href="#"><i class="fas fa-plus"></i>Inscription</a>
+    <a href="#"><i class="fas fa-key"></i>Connexion</a>
+    <a href="index.php?action=list_u"><i class="fas fa-list"></i>Liste</a>
   </div>
   <!-- <a href="#contact">Search</a> -->
 </div>

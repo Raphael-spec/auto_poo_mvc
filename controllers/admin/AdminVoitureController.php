@@ -89,18 +89,42 @@ class AdminVoitureController{
     }
 
     public function editVoiture(){
-
       if(isset($_GET['id']) && filter_var($_GET['id'], FILTER_VALIDATE_INT)){
-        
-        $id = $_GET['id'];
-        $editV = new Voiture();
-        $editV->setId_v($id);
-        $editCar = $this->advm->voitureItem($editV);
-            
-        $tabCat = $this->adCat->getCategories();
-        require_once('./views/admin/voitures/adminEditV.php');
-       }
-      
-
-    }
+          $id = $_GET['id'];
+          $editV = new Voiture();
+          $editV->setId_v($id);
+          $editCar = $this->advm->voitureItem($editV);
+          
+         $tabCat = $this->adCat->getCategories();
+         
+         if(isset($_POST['soumis']) && !empty($_POST['marque']) && !empty($_POST['prix'])){
+             
+             $marque = trim(htmlentities(addslashes($_POST['marque'])));
+             $modele = trim(htmlentities(addslashes($_POST['modele'])));
+             $prix = trim(htmlentities(addslashes($_POST['prix'])));
+             $quantite = trim(htmlentities(addslashes($_POST['quantite'])));
+             $annee = trim(htmlentities(addslashes($_POST['annee'])));
+             $id_cat = trim(htmlentities(addslashes($_POST['cat'])));
+             $description = trim(htmlentities(addslashes($_POST['desc'])));
+             $image = $_FILES['image']['name'];
+             
+             $editCar->setMarque($marque);
+             $editCar->setModele($modele);
+             $editCar->setPrix($prix);
+             $editCar->setQuantite($quantite);
+             $editCar->setAnnee($annee);
+             $editCar->getCategorie()->setId_cat($id_cat);
+             $editCar->setDescription($description);
+             $editCar->setImage($image);
+             
+             $destination = './assets/images/';
+             move_uploaded_file($_FILES['image']['tmp_name'],$destination.$image);
+             $ok = $this->advm->updateVoiture($editCar); 
+             if($ok > 0){
+                 header('location:index.php?action=list_v');
+              }
+          }
+          require_once('./views/admin/voitures/adminEditV.php');
+      }
+  }
 }

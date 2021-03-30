@@ -3,20 +3,28 @@
 require_once('./models/Driver.php');
 require_once('./models/Categorie.php');
 require_once('./models/Voiture.php');
+require_once('./models/Grade.php');
+require_once('./models/Utilisateurs.php');
 require_once('./models/admin/AdminCategorieModel.php');
 require_once('./controllers/admin/AdminCategorieController.php');
 require_once('./models/admin/AdminVoitureModel.php');
 require_once('./controllers/admin/AdminVoitureController.php');
+require_once('./models/admin/AdminUtilisateurModel.php');
+require_once('./controllers/admin/AdminUtilisateurController.php');
+
+
 
 class Router{
     private $ctrca;
     private $ctrv;
+    private $ctru;
 
     public function __construct()
     {
         $this->ctrca = new AdminCategorieController();
         $this->ctrv = new AdminVoitureController();
         //on refait lamemechose que predemment effet domino on recupere les infos admincategoriecontroller en creeant une instance qu'on la colle au nouveau objet cree dans le router et onlui associe, plus bas la methode admincategorie controller listcategorie. Et on rappelle tous les requires qui ont ete neccasire a l'elaboration du chemin et de la donnee comme precedemment
+        $this->ctru = new AdminUtilisateurController();
     }
 
     public function getPath(){
@@ -65,6 +73,10 @@ class Router{
 
                     case 'edit_v':
                         $this->ctrv->editVoiture();
+                        break;
+
+                    case 'list_u':
+                        $this->ctru->listUsers();
                         break;
     
 
