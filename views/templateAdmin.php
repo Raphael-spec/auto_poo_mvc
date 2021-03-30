@@ -20,36 +20,36 @@
   <a href="#clients"><i class="fas fa-sign-out-alt"></i>Deconnexion</a>
 
 
-  <button class="dropdown-btn"><i class="fas fa-users"></i>Categorie 
+  <button class="dropdown-btn"><i class="fas fa-layer-group text-white"></i>Categorie 
     <i class="fa fa-caret-down"></i>
   </button>
   <div class="dropdown-container">
-    <a href="index.php?action=add_cat">Ajout</a>
-    <a href="index.php?action=list_cat">Liste</a>
+    <a href="index.php?action=add_cat"><i class="fas fa-plus"></i>Ajout</a>
+    <a href="index.php?action=list_cat"><i class="fas fa-list"></i>Liste</a>
   </div>
 
-  <button class="dropdown-btn"><i class="fas fa-users"></i>Voiture
+  <button class="dropdown-btn"><i class="fas fa-car-side text-white"></i>Voiture
     <i class="fa fa-caret-down"></i>
   </button>
   <div class="dropdown-container">
-    <a href="index.php?action=add_v">Ajout</a>
-    <a href="index.php?action=list_v">Liste</a>
+    <a href="index.php?action=add_v"><i class="fas fa-plus"></i>Ajout</a>
+    <a href="index.php?action=list_v"><i class="fas fa-list"></i>Liste</a>
   </div>
 
-  <button class="dropdown-btn"><i class="fas fa-users"></i>Grade 
+  <button class="dropdown-btn"><i class="fas fa-user-graduate text-white"></i>Grade 
     <i class="fa fa-caret-down"></i>
   </button>
   <div class="dropdown-container">
-    <a href="#">Ajout</a>
-    <a href="#">Liste</a>
+    <a href="#"><i class="fas fa-plus"></i>Ajout</a>
+    <a href="#"><i class="fas fa-list"></i>Liste</a>
   </div>
 
-  <button class="dropdown-btn"><i class="fas fa-users"></i>Utilisateurs 
+  <button class="dropdown-btn"><i class="fas fa-users text-white"></i>Utilisateurs 
     <i class="fa fa-caret-down"></i>
   </button>
   <div class="dropdown-container">
-    <a href="#">Ajout</a>
-    <a href="#">Liste</a>
+    <a href="#"><i class="fas fa-plus"></i>Ajout</a>
+    <a href="#"><i class="fas fa-list"></i>Liste</a>
   </div>
   <!-- <a href="#contact">Search</a> -->
 </div>

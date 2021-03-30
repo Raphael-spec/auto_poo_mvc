@@ -49,6 +49,7 @@ class AdminCategorieController{
            
             $id = trim($_GET['id']);
            $cat = $this->adCat->categorieItem($id);
+           //$cat different de celui de model mais pas de celui en dessous
 
            if(isset($_POST['soumis']) && !empty($_POST['categorie'])){
                

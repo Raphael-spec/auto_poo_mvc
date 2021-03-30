@@ -52,7 +52,7 @@ class AdminCategorieModel extends Driver{
         }
     }
 
-    public function updateCategorie(Categorie $cat){ // pour lui passer un objet on veut tout lui donnerid et le nom
+    public function updateCategorie(Categorie $cat){ // pour lui passer un objet on veut tout lui donnerid et le nom elle attends un objet categorie
         $sql = "UPDATE categorie
                 SET nom_cat = :nom
                 WHERE id_cat = :id";
