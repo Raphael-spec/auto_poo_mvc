@@ -30,4 +30,14 @@ class AdminUtilisateurModel extends Driver{
             return $tabUser;
 
     }
+
+    public function updateStatut(Utilisateurs $user){
+            $sql = "UPDATE utilisateurs
+                    SET statut = :statut
+                    WHERE id = :id";
+            
+            $result = $this->getRequest($sql, ['statut'=>$user->getStatut(), 'id'=>$user->getId()]);
+            return $result->rowCount();
+
+    }
 }
