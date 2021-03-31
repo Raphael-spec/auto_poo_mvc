@@ -13,6 +13,7 @@ class AdminCategorieController{
     }
 
     public function listCategories(){
+        AuthController::isLogged();//(2) Pour s'authentifier 
         //effet domino nouscreeons une instance de admincategorie model pour recuperer ces infos et les coller dans la nouvelle proprieté crée en appelant ca fonction get cetegorie dans la nouvelle fonction listcategorie et rappelle de nouveau les require de chaque element qui ont ete necessaire a l'elaboration du chemin
         $allCat = $this->adCat->getCategories();
         require_once('./views/admin/adminCategoriesItems.php');
@@ -29,6 +30,10 @@ class AdminCategorieController{
 //     }
 
         public function removeCat(){
+            AuthController::isLogged();//(2) Pour s'authentifier 
+            AuthController::accessUser();//(3)
+      
+
             if(isset($_GET['id']) && $_GET['id'] < 1000 && filter_var($_GET['id'], FILTER_VALIDATE_INT)){
                 $id = trim($_GET['id']);
                 
@@ -44,6 +49,8 @@ class AdminCategorieController{
 
 
         public function editCat(){
+            AuthController::isLogged();//(2) Pour s'authentifier 
+
            // echo'edit categorie';// Pour tester
            if(isset($_GET['id']) && $_GET['id'] < 1000 && filter_var($_GET['id'], FILTER_VALIDATE_INT)){
            
@@ -69,6 +76,8 @@ class AdminCategorieController{
         }
 
         public function addCat(){
+            AuthController::isLogged();//(2) Pour s'authentifier 
+
             if(isset ($_POST['soumis']) && !empty($_POST['categorie'])){
                 $nom_cat = trim(htmlentities(addslashes($_POST['categorie'])));
                 $newCat = new Categorie();

@@ -11,6 +11,7 @@ class AdminVoitureController{
     }
 
     public function listVoitures(){
+      AuthController::isLogged();//(2) Pour s'authentifier 
       //var_dump($_POST);
         if(isset($_POST['soumis']) && !empty($_POST['search'])){
             $search = trim(htmlspecialchars(addslashes($_POST['search'])));
@@ -27,6 +28,7 @@ class AdminVoitureController{
     }
 
     public function addVoitures(){
+      AuthController::isLogged();//(2) Pour s'authentifier 
 
 
       if (isset($_POST['soumis']) && !empty($_POST['marque']) && !empty($_POST['prix'])){
@@ -72,6 +74,9 @@ class AdminVoitureController{
 
 
     public function removeVoiture(){
+      AuthController::isLogged();//(2) Pour s'authentifier 
+
+      AuthController::accessUser();//(3)
       
       if(isset($_GET['id']) && filter_var($_GET['id'], FILTER_VALIDATE_INT)){//<1000 ne sert a rien sur ce coup la et dum trim
         
@@ -89,6 +94,8 @@ class AdminVoitureController{
     }
 
     public function editVoiture(){
+      AuthController::isLogged();//(2) Pour s'authentifier 
+      
       if(isset($_GET['id']) && filter_var($_GET['id'], FILTER_VALIDATE_INT)){
           $id = $_GET['id'];
           $editV = new Voiture();

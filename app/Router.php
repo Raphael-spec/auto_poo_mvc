@@ -11,6 +11,7 @@ require_once('./models/admin/AdminVoitureModel.php');
 require_once('./controllers/admin/AdminVoitureController.php');
 require_once('./models/admin/AdminUtilisateurModel.php');
 require_once('./controllers/admin/AdminUtilisateurController.php');
+require_once('./controllers/admin/AuthController.php');
 
 
 
@@ -77,6 +78,18 @@ class Router{
 
                     case 'list_u':
                         $this->ctru->listUsers();
+                        break;
+
+                    case 'login':
+                        $this->ctru->login();
+                        break;
+
+                    case 'logout':
+                            AuthController::logout();
+                            break;
+
+                    case 'register':
+                        $this->ctru->addUser();
                         break;
     
 

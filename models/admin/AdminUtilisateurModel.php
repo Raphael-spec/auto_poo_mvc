@@ -6,7 +6,7 @@ class AdminUtilisateurModel extends Driver{
         $sql ="SELECT * 
                FROM utilisateurs u
                INNER JOIN grade g
-               ON u.id = g.id_g
+               ON u.id_g = g.id_g
                ORDER BY u.id DESC";
 
         $result = $this->getRequest($sql);
@@ -39,5 +39,48 @@ class AdminUtilisateurModel extends Driver{
             $result = $this->getRequest($sql, ['statut'=>$user->getStatut(), 'id'=>$user->getId()]);
             return $result->rowCount();
 
+    }
+
+    public function signIn($loginEmail, $pass){//pas d'objet sinon je serai obligé de bidouiller a cause de logemail, dans le controller on exploite 
+        $sql = "SELECT *
+                FROM utilisateurs
+                WHERE (login = :logEmail OR email = :logEmail) AND pass = :pass";
+        
+        $result = $this->getRequest($sql,['logEmail'=>$loginEmail, 'pass'=>$pass]);// pas besoin de get puisque on utilise pas l'utilisatuer (a verifier)
+
+        $row = $result->fetch(PDO::FETCH_OBJ);
+
+        return $row;
+    }
+
+    public function register(Utilisateurs $user){
+        
+        $sql = "SELECT *
+                FROM utilisateurs
+                WHERE email = :email";
+        
+        $result = $this->getRequest($sql, ['email'=>$user->getEmail()]);
+        
+        if($result->rowCount() == 0){
+            
+            $req = "INSERT INTO utilisateurs(nom, prenom, login, email, pass, statut, id_g)
+                    VALUES(:nom, :prenom, :login, :email, :pass, :statut, :id_g)";
+           
+           $tabUsers = ['nom'=>$user->getNom(), 
+                        'prenom'=>$user->getPrenom(), 
+                        'login'=>$user->getLogin(), 
+                        'email'=>$user->getEmail(), 
+                        'pass'=>$user->getPass(), 
+                        'statut'=>$user->getStatut(),
+                        'id_g'=>$user->getGrade()->getId_g()
+                        ];
+            
+                $res = $this->getRequest($req, $tabUsers);
+            
+                return $res;
+        }else{
+                return "Cet utilisateur existe déjà";
+
+        }
     }
 }

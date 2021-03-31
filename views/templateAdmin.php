@@ -16,8 +16,9 @@
   <div class="text-center">
       <i class="fas fa-car text-white fa-3x"></i>
   </div>
+  <?php if(isset($_SESSION['Auth'])){ ?>
 
-  <a href="#clients"><i class="fas fa-sign-out-alt"></i>Deconnexion</a>
+  <a href="index.php?action=logout"><i class="fas fa-sign-out-alt"></i>Déconnexion</a>
 
 
   <button class="dropdown-btn"><i class="fas fa-layer-group text-white"></i>Categorie 
@@ -36,6 +37,10 @@
     <a href="index.php?action=list_v"><i class="fas fa-list"></i>Liste</a>
   </div>
 
+  <?php 
+
+    if($_SESSION['Auth']->id_g != 3) { //tableau d'objet donc ['id_g']NO
+      ?>
   <button class="dropdown-btn"><i class="fas fa-user-graduate text-white"></i>Grade 
     <i class="fa fa-caret-down"></i>
   </button>
@@ -43,20 +48,29 @@
     <a href="#"><i class="fas fa-plus"></i>Ajout</a>
     <a href="#"><i class="fas fa-list"></i>Liste</a>
   </div>
+ 
 
   <button class="dropdown-btn"><i class="fas fa-users text-white"></i>Utilisateurs 
     <i class="fa fa-caret-down"></i>
   </button>
   <div class="dropdown-container">
+  <?php if($_SESSION['Auth']->id_g == 1) { //(3)?>
     <a href="#"><i class="fas fa-plus"></i>Inscription</a>
-    <a href="#"><i class="fas fa-key"></i>Connexion</a>
+    <?php } ?>
+    <!-- <a href="index.php?action=login"><i class="fas fa-key"></i>Connexion</a> -->
     <a href="index.php?action=list_u"><i class="fas fa-list"></i>Liste</a>
   </div>
   <!-- <a href="#contact">Search</a> -->
+<?php }} ?>
 </div>
-
 <div class="main">
   <h1 class="bg-secondary text-center text-white">ADMINISTRATION</h1>
+  <h2 class="text-end"><?php 
+  if(isset($_SESSION['Auth'])){
+    echo $_SESSION['Auth']->nom;
+     } ?>
+     </h2>
+    
   <?= $contenu; ?>
 </div>
 
