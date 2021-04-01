@@ -11,6 +11,8 @@
 // require_once('./controllers/admin/AdminVoitureController.php');
 // require_once('./models/admin/AdminUtilisateurModel.php');
 // require_once('./controllers/admin/AdminUtilisateurController.php');
+// require_once('./models/admin/AdminGradeModel.php');
+// require_once('./controllers/admin/AdminGradeController.php');
 // require_once('./controllers/admin/AuthController.php');
 require_once('./app/autoload.php');
 
@@ -90,6 +92,10 @@ class Router{
                     case 'logout':
                             AuthController::logout();
                             break;
+
+                    case 'list_g':
+                        $this->ctrg->listGrade();
+                        break;
 
                     case 'register':
                         $this->ctru->addUser();

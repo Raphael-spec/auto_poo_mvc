@@ -46,7 +46,7 @@
   </button>
   <div class="dropdown-container">
     <a href="#"><i class="fas fa-plus"></i>Ajout</a>
-    <a href="#"><i class="fas fa-list"></i>Liste</a>
+    <a href="index.php?action=list_g"><i class="fas fa-list"></i>Liste</a>
   </div>
  
 
