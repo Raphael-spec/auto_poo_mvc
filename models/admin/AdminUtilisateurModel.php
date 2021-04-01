@@ -83,4 +83,25 @@ class AdminUtilisateurModel extends Driver{
 
         }
     }
+
+    public function selectGrade(){
+        $sql="SELECT *
+              FROM grade";
+        
+        $res = $this->getRequest($sql);
+        $rows = $res->fetchAll(PDO::FETCH_OBJ);
+        $tabcat =[];
+
+        foreach($rows as $row){
+
+            $addU = new Grade();
+            $addU->setId_g($row->id_g);
+            $addU->setNom_g($row->nom_g);
+            array_push($tabcat,$addU);
+        }
+  
+        return $tabcat;
+       
+    }
+    
 }

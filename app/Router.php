@@ -1,17 +1,18 @@
 <?php
 
-require_once('./models/Driver.php');
-require_once('./models/Categorie.php');
-require_once('./models/Voiture.php');
-require_once('./models/Grade.php');
-require_once('./models/Utilisateurs.php');
-require_once('./models/admin/AdminCategorieModel.php');
-require_once('./controllers/admin/AdminCategorieController.php');
-require_once('./models/admin/AdminVoitureModel.php');
-require_once('./controllers/admin/AdminVoitureController.php');
-require_once('./models/admin/AdminUtilisateurModel.php');
-require_once('./controllers/admin/AdminUtilisateurController.php');
-require_once('./controllers/admin/AuthController.php');
+// require_once('./models/Driver.php');
+// require_once('./models/Categorie.php');
+// require_once('./models/Voiture.php');
+// require_once('./models/Grade.php');
+// require_once('./models/Utilisateurs.php');
+// require_once('./models/admin/AdminCategorieModel.php');
+// require_once('./controllers/admin/AdminCategorieController.php');
+// require_once('./models/admin/AdminVoitureModel.php');
+// require_once('./controllers/admin/AdminVoitureController.php');
+// require_once('./models/admin/AdminUtilisateurModel.php');
+// require_once('./controllers/admin/AdminUtilisateurController.php');
+// require_once('./controllers/admin/AuthController.php');
+require_once('./app/autoload.php');
 
 
 
@@ -19,6 +20,7 @@ class Router{
     private $ctrca;
     private $ctrv;
     private $ctru;
+    private $ctrpub;
 
     public function __construct()
     {
@@ -26,6 +28,7 @@ class Router{
         $this->ctrv = new AdminVoitureController();
         //on refait lamemechose que predemment effet domino on recupere les infos admincategoriecontroller en creeant une instance qu'on la colle au nouveau objet cree dans le router et onlui associe, plus bas la methode admincategorie controller listcategorie. Et on rappelle tous les requires qui ont ete neccasire a l'elaboration du chemin et de la donnee comme precedemment
         $this->ctru = new AdminUtilisateurController();
+        $this->ctrpub = new PublicController();
     }
 
     public function getPath(){
@@ -94,7 +97,10 @@ class Router{
     
 
 
-            }
+                }
+           
+            }else{
+                $this->ctrpub->getPubVoitures();
         }
     }
 }

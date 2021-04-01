@@ -55,7 +55,7 @@
   </button>
   <div class="dropdown-container">
   <?php if($_SESSION['Auth']->id_g == 1) { //(3)?>
-    <a href="#"><i class="fas fa-plus"></i>Inscription</a>
+    <a href="index.php?action=register"><i class="fas fa-plus"></i>Inscription</a>
     <?php } ?>
     <!-- <a href="index.php?action=login"><i class="fas fa-key"></i>Connexion</a> -->
     <a href="index.php?action=list_u"><i class="fas fa-list"></i>Liste</a>
