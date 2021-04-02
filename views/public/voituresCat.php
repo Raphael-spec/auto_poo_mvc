@@ -30,7 +30,7 @@
 <div class="row my-3">
               <div class="col-8">
                 <div class="row row-cols-1 row-cols-md-2 g-4">
-                    <?php foreach($cars as $car){?>
+                    <?php foreach($voitures as $car){?>
                     <div class="col">
                       <div class="card">
                         <img src="./assets/images/<?= $car->getImage();?>" class="card-img-top" height="300" alt="...">
@@ -53,25 +53,6 @@
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                               Quantité:
                               <span class="badge bg-danger rounded-pill"><?= $car->getQuantite();?></span>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-
-                            <form action="index.php?action=checkout" method="post">
-                                <input type="hidden" name="marque" value="<?= $car->getMarque();?>">
-                                <input type="hidden"  name="modele"value="<?= $car->getModele();?>">
-                                <input type="hidden" name="image" value="<?= $car->getImage();?>">
-                                <input type="hidden"  name="prix" value="<?= $car->getPrix();?>">
-                              <?php if($car->getQuantite() > 0){ ?>
-                                  <button type="submit" name="envoi" class="btn btn-light text-success"> Acheter</button>
-                              <?php } ?>                              
-                            </form>
-                              <strong class="badge  rounded-pill">
-                                <?php if($car->getQuantite() == 0){ ?>
-                              <a href="index.php?action=order&id=<?= $car->getId_v();?>" class="btn btn-light text-warning"> 
-                                  Commander
-                              </a>
-                              <?php } ?>                              
-                              </strong>
                             </li>
                           </ul>
                         </div>

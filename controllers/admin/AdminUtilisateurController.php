@@ -63,6 +63,8 @@ class AdminUtilisateurController{
     }
 
     public function addUser(){
+        
+        AuthController::isLogged();
         if(isset($_POST['submit'])){
 
             if(filter_var($_POST['email'],FILTER_VALIDATE_EMAIL) && strlen($_POST['pass']) >= 4){
